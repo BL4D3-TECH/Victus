@@ -17,6 +17,9 @@ para usar la API de spotify la primera vez que la uses se abrirá el navegador y
 
 ## Set-up:
 `descarga el .zip (o el repositorio con git)`
+
 `modifica el archivo init.bat con la ruta hacia el archivo daemonizeit.py`
+
 `mueve el archivo "init.bat" a la ruta "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\"`
+
 `reinicia el ordenador o ejecuta el init.bat manualmente`
