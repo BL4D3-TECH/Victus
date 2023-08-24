@@ -16,6 +16,7 @@ para usar la API de spotify la primera vez que la uses se abrirá el navegador y
 - victus escribe <lo que quieras escribir>
 
 ## Set-up:
+
 `descarga el .zip (o el repositorio con git)`
 
 `modifica el archivo init.bat con la ruta hacia el archivo daemonizeit.py`
