@@ -1,0 +1,1 @@
+powershell Start-Process "la ruta hacia el archivo daemonazeit.py" -WindowStyle Hidden
