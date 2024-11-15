@@ -5,14 +5,14 @@ import Spotify_control
 import pyautogui as pgui
 
 r = sr.Recognizer() 
-ordenes = [("victus abre google", "victus abre chrome"), "victus abre youtube", ("victus abre visual studio code", "victus abre vs code", "victus abre vscode", "victus abre visual", "victus abre visual estudio"),
-("victus entra en game mode", "victus entra en modo gaming", "victus a jugar", "victus vamos a jugar"), ("victus abre spoti", "victus abre spotify"), "victus siguiente canción",
- "victus cancion anterior", ("victus para la canción", "victus para la música"), ("victus sigue la canción", "victus sigue la música"), "victus sube el volumen", "victus baja el volumen",
- ("victus apaga el pc", "victus apágate"), ("victus", "escribe")]
+ordenes = [("lara abre google", "lara abre chrome"), "lara abre youtube", ("lara abre visual studio code", "lara abre vs code", "lara abre vscode", "lara abre visual", "lara abre visual estudio"),
+("lara entra en game mode", "lara entra en modo gaming", "lara a jugar", "lara vamos a jugar"), ("lara abre spoti", "lara abre spotify"), "lara siguiente canción",
+ "lara cancion anterior", ("lara para la canción", "lara para la música"), ("lara sigue la canción", "lara sigue la música"), ("lara", "sube", "el", "volumen"), ("lara", "baja", "el", "volumen"),
+ ("lara apaga el pc", "lara apágate"), ("lara", "escribe")]
 
-VScode = ""
-Spotify = ""
-Discord = ""
+VScode = "C:/Users/Alberto/AppData/Local/Programs/Microsoft VS Code"
+Spotify = "C:/Users/Alberto/AppData/Roaming/Spotify/Spotify.exe"
+Discord = "C:/Users/Alberto/AppData/Local/Discord/Update.exe --processStart Discord.exe"
 device_id, sp = Spotify_control.Spotify()
 
 while True:
@@ -43,10 +43,10 @@ while True:
             devices_lst = Spotify_control.devices(sp)
             volumen = Spotify_control.volume(devices_lst)
             Spotify_control.change_volume(sp, device_id, devices_lst, volumen, 5)
-        elif text.lower() == ordenes[10]:
+        elif text.lower().split()[0] == ordenes[10][0] and text.lower().split()[1] == ordenes[10][1] and text.lower().split()[2] == ordenes[10][2] and text.lower().split()[3] == ordenes[10][3]:
             devices_lst = Spotify_control.devices(sp)
             volumen = Spotify_control.volume(devices_lst)
-            Spotify_control.change_volume(sp, device_id, devices_lst, volumen, -5)
+            Spotify_control.change_volume(sp, device_id, devices_lst, volumen, 0 - int(text.split()[-1]))
         elif text.lower() in ordenes[11]:
             subprocess.run("shutdown /p", shell=True)
         elif ordenes[12][0] in text.lower().split(sep=" ") and ordenes[12][1] in text.lower().split(sep=" "):
@@ -55,6 +55,8 @@ while True:
             clean_list.pop(0)
             clean_text = "".join(f"{x} " for x in clean_list)
             pgui.write(clean_text)
+        print(text)
     except sr.exceptions.UnknownValueError:
         r = sr.Recognizer()
+        print("not understanded")
         continue
